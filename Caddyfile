@@ -1,0 +1,30 @@
+{
+	servers whixard.eu {
+		protocol {
+			experimental_http3
+		}
+	}
+}
+
+:80 {
+	root * /srv
+	tls /srv/cert.pem /srv/key.pem
+	encode gzip
+	file_server
+}
+
+http://whixard.eu {
+	redir https://whixard.eu
+}
+
+http://www.whixard.eu {
+	redir https://whixard.eu
+}
+
+https://www.whixard.eu {
+	redir https://whixard.eu
+}
+
+:80 {
+	redir https://whixard.eu
+}
